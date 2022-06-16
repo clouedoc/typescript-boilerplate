@@ -1,0 +1,5 @@
+#!/usr/bin/env -S node --no-deprecation
+
+require('@oclif/command').run()
+	.then(require('@oclif/command/flush'))
+	.catch(require('@oclif/errors/handle'))

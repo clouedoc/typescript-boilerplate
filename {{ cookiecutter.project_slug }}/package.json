@@ -1,0 +1,67 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "1.0.0",
+  "description": "{{ cookiecutter.project_short_description }}",
+  "repository": "{{ cookiecutter.project_url }}",
+  "author": "{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>",
+  "license": "{{ cookiecutter.project_license }}",
+  "private": "{{ cookiecutter.package_private }}",
+  "bin": {
+    "{{ cookiecutter.binary_name }}": "./bin/run"
+  },
+  "files": [
+    "lib",
+    "oclif.manifest.json",
+    "bin"
+  ],
+  "scripts": {
+    "detect-circular-dependencies": "madge --circular --extensions ts ./src",
+    "lint": "eslint ./src --fix --max-warnings 0",
+    "prettier": "prettier --config .prettierrc --write --loglevel error {src,functions,scripts}/**/*.{js,ts}",
+    "sort": "npx sort-package-json",
+    "test": "jest",
+    "postinstall": "patch-package",
+    "build": "tsc",
+    "dev": "nodemon --exec 'yarn build && yarn lint && yarn oclif:build && yarn sort'",
+    "oclif:build": "oclif manifest && oclif readme",
+  },
+  "dependencies": {
+    "@oclif/command": "^1.8.16",
+    "@oclif/plugin-help": "^5.1.12",
+    "@oclif/plugin-not-found": "^2.3.1",
+    "winston": "^3.6.0",
+    "winston-console-format": "^1.0.8",
+    "winston-loki": "^6.0.5",
+    "fast-safe-stringify": "^2.1.1"
+  },
+  "devDependencies": {
+		"@rushstack/eslint-config": "^2.6.0",
+		"@types/node": "^16.11.6",
+		"@typescript-eslint/eslint-plugin": "^5.2.0",
+		"@typescript-eslint/parser": "^5.2.0",
+		"eslint": "^8.17.0",
+		"typescript": "^4.7.3",
+    "patch-package": "^6.4.7",
+    "@swc/cli": "^0.1.56",
+    "@swc/core": "^1.2.152",
+    "@swc/jest": "^0.2.20",
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/typescript-estree": "^5.14.0",
+    "jest": "^27.5.1",
+    "madge": "^5.0.1",
+    "nodemon": "^2.0.15",
+    "oclif": "^3.0.1",
+    "prettier": "^2.6.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "{{ cookiecutter.binary_name }}",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found"
+    ]
+  }
+}

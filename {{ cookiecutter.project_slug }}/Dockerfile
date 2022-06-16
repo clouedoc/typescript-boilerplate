@@ -1,0 +1,23 @@
+FROM node:16-alpine as builder
+
+WORKDIR /app
+
+COPY package.json yarn.lock /app/
+RUN yarn install \
+	&& yarn link \
+	&& npm prune --production
+
+FROM node:16-alpine as runner
+
+# Install Doppler CLI
+RUN wget -q -t3 'https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.key' -O /etc/apk/keys/cli@doppler-8004D9FF50437357.rsa.pub && \
+	echo 'https://packages.doppler.com/public/cli/alpine/any-version/main' | tee -a /etc/apk/repositories && \
+	apk add doppler
+
+COPY --from=builder /app/ /app/
+
+# Link binary name
+RUN yarn link
+
+ENTRYPOINT [ "doppler", "run", "--", "{{ cookiecutter.binary_name }}" ]
+

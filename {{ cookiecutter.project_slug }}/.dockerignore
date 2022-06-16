@@ -1,0 +1,17 @@
+# Build Files
+node_modules/
+build/
+lib/
+
+# Editor preferences
+.editorconfig
+.dockerignore
+.git/
+.no-git/
+.vscode/
+
+*.log
+
+Dockerfile
+.dockerignore
+Makefile

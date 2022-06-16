@@ -1,0 +1,16 @@
+tasks:
+  - init: yarn install && yarn build
+    command: yarn dev
+
+vscode:
+  extensions:
+    - esbenp.prettier-vscode
+    - dbaeumer.vscode-eslint
+    - WakaTime.vscode-wakatime
+    - streetsidesoftware.code-spell-checker
+    - eamodio.gitlens
+    - mushan.vscode-paste-image
+    - lukashass.volar
+    - wayou.vscode-todo-highlight
+    - nicoespeon.abracadabra
+    - https://marketplace.visualstudio.com/_apis/public/gallery/publishers/nick-lvov-dev/vsextensions/typescript-explicit-types/0.0.9/vspackage

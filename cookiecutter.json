@@ -1,0 +1,13 @@
+{
+	"project_name": "your-project",
+	"full_name": "Camille Louédoc-Eyries",
+  "email": "clouedoc@example.com",
+	"project_emoji": "",
+	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+	"project_url": "https://github.com/yourusername/yourproject",
+	"binary_name": "coolcli",
+	"project_license": "MIT",
+	"project_short_description": "Enter your project description here",
+	"package_private": "true",
+	"docker_image_name": "testing_image"
+}
