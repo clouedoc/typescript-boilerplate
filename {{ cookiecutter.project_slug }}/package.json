@@ -24,7 +24,7 @@
     "prettier": "prettier --config .prettierrc --write --loglevel error .",
     "sort": "npx sort-package-json",
     "test": "jest",
-    "upgrade": "npx npm-check-updates"
+    "ncu": "npx npm-check-updates"
   },
   "dependencies": {
     "@oclif/command": "^1.8.16",

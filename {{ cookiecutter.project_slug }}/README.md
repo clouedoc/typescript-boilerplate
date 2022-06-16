@@ -23,6 +23,7 @@ cd {{ cookiecutter.project_slug }}
 yarn install
 
 # Here are the available scripts:
+yarn ncu # check for package updates
 yarn sort # sort package.json
 yarn detect-circular-dependencies # detect circular deps with Madge
 yarn lint # run ESLint
