@@ -13,8 +13,6 @@ const config = {
 		'@rushstack/eslint-config/mixins/friendly-locals',
 		'@rushstack/eslint-config/mixins/packlets',
 	], // <---- put your profile string here
-	parser: '@typescript-eslint/parser',
-	parserOptions: { tsconfigRootDir: __dirname, project: './tsconfig.json' },
 	env: {
 		es6: true,
 	},
@@ -26,6 +24,17 @@ const config = {
 		'no-console': 'warn',
 	},
 	overrides: [
+		{
+			files: ['**/*.{ts,js}'],
+			/**
+			 * TypeScript configuration
+			 */
+			parser: '@typescript-eslint/parser',
+			parserOptions: {
+				tsconfigRootDir: __dirname,
+				project: './tsconfig.json',
+			},
+		},
 		{
 			files: ['src/packlets/scripts/*', '*.spec.ts'],
 			rules: {
