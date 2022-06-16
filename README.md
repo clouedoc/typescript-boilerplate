@@ -1,10 +1,12 @@
 <h1 align="center">
-	 typescript-boilerplate-evolved
+	 typescript-boilerplate
 </h1>
 
 <h3 align="center">
 	My newest TypeScript boilerplate, with Cookiecutter support for easy usage.
 </h3>
+
+If you are looking for my older boilerplate template, you can find it [here](https://github.com/clouedoc/typescript-boilerplate-archive).
 
 ## Usage
 

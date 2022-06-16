@@ -12,6 +12,9 @@
 git clone {{ cookiecutter.project_url }}.git
 cd {{ cookiecutter.project_slug }}
 yarn install && yarn link
+
+# to be able to call the CLI, you must add the result of `yarn global bin` to your $PATH
+# e.g. echo "export PATH=$PATH:$(yarn global bin)" >> ~/.zshrc
 {{ cookiecutter.binary_name }} # see CLI usage documentation below
 ```
 

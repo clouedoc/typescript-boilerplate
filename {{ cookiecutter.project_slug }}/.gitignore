@@ -1,4 +1,13 @@
+# Secrets
+.env
+
+# Dev files
 node_modules
-.DS_Store
-yarn-error.log
 lib
+
+# OSX
+.DS_Store
+
+# Yarn
+package-lock.json
+yarn-error.log
