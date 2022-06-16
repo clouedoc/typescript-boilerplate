@@ -6,6 +6,8 @@
 	My newest TypeScript boilerplate, with Cookiecutter support for easy usage.
 </h3>
 
+I aim to update this boilerplate when I integrate new tools in my workflow.
+
 If you are looking for my older boilerplate template, you can find it [here](https://github.com/clouedoc/typescript-boilerplate-archive).
 
 ## Usage
@@ -23,6 +25,7 @@ cookiecutter gh:clouedoc/typescript-boilerplate-evolved
 - lightning-fast testing and compilation thanks to _swc_
 - lightweight + Puppeteer Dockerfile
 - gitpod for seamless remote development
+- GitHub action
 
 ## License
 

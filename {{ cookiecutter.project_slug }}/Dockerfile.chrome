@@ -71,7 +71,7 @@ RUN apt-get -y -qq --no-install-recommends install \
 	build-essential
 
 # Install NodeJS
-RUN curl --silent --location https://deb.nodesource.com/setup_16.x | bash - && \
+RUN curl --silent --location https://deb.nodesource.com/setup_{{ cookiecutter.node_version }}.x | bash - && \
 	apt-get -qq install nodejs && \
 	npm install -g npm@latest && \
 	npm install -g yarn

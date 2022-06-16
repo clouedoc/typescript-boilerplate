@@ -1,0 +1,33 @@
+name: Build
+
+on:
+  push:
+    paths-ignore:
+    - "docker/**"
+    - ".github/**"
+  workflow_dispatch:
+
+jobs:
+  run:
+    name: Build & lint
+    runs-on: ubuntu-20.04
+    env:
+      NODE_ENV: development
+      CI: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # checkout full history
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: "{{ cookiecutter.node_version }}" # the Node version of our project
+      - name: Install dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Lint
+        run: yarn lint
+      - name: Check circular dependencies
+        run: yarn detect-circular-dependencies

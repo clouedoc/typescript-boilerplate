@@ -10,5 +10,6 @@
   "project_license": "MIT",
   "project_short_description": "Enter your project description here",
   "package_private": "true",
-  "docker_image_name": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+  "docker_image_name": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",
+  "node_version": "16"
 }

@@ -1,1 +1,1 @@
-16
+{{ cookiecutter.node_version }}
