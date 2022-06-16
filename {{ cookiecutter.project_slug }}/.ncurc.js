@@ -3,6 +3,7 @@ module.exports = {
 	"reject": [
 		"puppeteer",
 		"@types/puppeteer",
+		"@types/node",
 	],
 	"loglevel": "error",
 	"errorLevel": 1,

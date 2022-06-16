@@ -6,8 +6,8 @@
 	My newest TypeScript boilerplate, with Cookiecutter support for easy usage.
 
 **⚠️ This is a work in progress ⚠️**
-</h3>
 
+</h3>
 
 ## Usage
 
@@ -21,8 +21,7 @@ cookiecutter gh:clouedoc/typescript-boilerplate-evolved
 - strict environment variables parsing with Zod
 - Loki integration
 - oclif to create beautiful CLI UXs
-- lightning-fast testing and compilation thanks to *swc*
-- RabbitMQ implementation
+- lightning-fast testing and compilation thanks to _swc_
 - lightweight + Puppeteer Dockerfile
 - gitpod for seamless remote development
 
