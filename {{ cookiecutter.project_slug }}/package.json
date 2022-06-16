@@ -1,69 +1,69 @@
 {
-  "name": "{{ cookiecutter.project_slug }}",
-  "version": "1.0.0",
-  "private": "{{ cookiecutter.package_private }}",
-  "description": "{{ cookiecutter.project_short_description }}",
-  "repository": "{{ cookiecutter.project_url }}",
-  "license": "{{ cookiecutter.project_license }}",
-  "author": "{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>",
-  "bin": {
-    "{{ cookiecutter.binary_name }}": "./bin/run"
-  },
-  "files": [
-    "lib",
-    "oclif.manifest.json",
-    "bin"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "detect-circular-dependencies": "madge --circular --extensions ts ./src",
-    "dev": "nodemon --exec 'yarn build && yarn lint && yarn oclif:build && yarn sort'",
-    "postinstall": "patch-package",
-    "lint": "eslint ./src --fix --max-warnings 0",
-    "oclif:build": "oclif manifest && oclif readme",
-    "prettier": "prettier --config .prettierrc --write --loglevel error {src,functions,scripts}/**/*.{js,ts}",
-    "sort": "npx sort-package-json",
-    "test": "jest",
-    "upgrade": "npx npm-check-updates"
-  },
-  "dependencies": {
-    "@oclif/command": "^1.8.16",
-    "@oclif/plugin-help": "^5.1.12",
-    "@oclif/plugin-not-found": "^2.3.1",
-    "fast-safe-stringify": "^2.1.1",
-    "winston": "^3.7.2",
-    "winston-console-format": "^1.0.8",
-    "winston-loki": "^6.0.5",
-    "zod": "^3.17.3"
-  },
-  "devDependencies": {
-    "@rushstack/eslint-config": "^2.6.0",
-    "@swc/cli": "^0.1.57",
-    "@swc/core": "^1.2.203",
-    "@swc/jest": "^0.2.21",
-    "@types/jest": "^28.1.1",
-    "@types/node": "^16.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
-    "@typescript-eslint/typescript-estree": "^5.28.0",
-    "eslint": "^8.17.0",
-    "jest": "^28.1.1",
-    "madge": "^5.0.1",
-    "nodemon": "^2.0.16",
-    "oclif": "^3.0.1",
-    "patch-package": "^6.4.7",
-    "prettier": "^2.7.0",
-    "typescript": "^4.7.3"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "oclif": {
-    "commands": "./lib/commands",
-    "bin": "{{ cookiecutter.binary_name }}",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-not-found"
-    ]
-  }
+	"name": "{{ cookiecutter.project_slug }}",
+	"version": "1.0.0",
+	"private": "{{ cookiecutter.package_private }}",
+	"description": "{{ cookiecutter.project_short_description }}",
+	"repository": "{{ cookiecutter.project_url }}",
+	"license": "{{ cookiecutter.project_license }}",
+	"author": "{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>",
+	"bin": {
+		"{{ cookiecutter.binary_name }}": "./bin/run"
+	},
+	"files": [
+		"lib",
+		"oclif.manifest.json",
+		"bin"
+	],
+	"scripts": {
+		"build": "tsc",
+		"detect-circular-dependencies": "madge --circular --extensions ts ./src",
+		"dev": "nodemon --exec 'yarn build && yarn lint && yarn oclif:build && yarn sort'",
+		"postinstall": "patch-package",
+		"lint": "eslint ./src --fix --max-warnings 0",
+		"oclif:build": "oclif manifest && oclif readme",
+		"prettier": "prettier --config .prettierrc --write --loglevel error .",
+		"sort": "npx sort-package-json",
+		"test": "jest",
+		"upgrade": "npx npm-check-updates"
+	},
+	"dependencies": {
+		"@oclif/command": "^1.8.16",
+		"@oclif/plugin-help": "^5.1.12",
+		"@oclif/plugin-not-found": "^2.3.1",
+		"fast-safe-stringify": "^2.1.1",
+		"winston": "^3.7.2",
+		"winston-console-format": "^1.0.8",
+		"winston-loki": "^6.0.5",
+		"zod": "^3.17.3"
+	},
+	"devDependencies": {
+		"@rushstack/eslint-config": "^2.6.0",
+		"@swc/cli": "^0.1.57",
+		"@swc/core": "^1.2.203",
+		"@swc/jest": "^0.2.21",
+		"@types/jest": "^28.1.1",
+		"@types/node": "^16.0.0",
+		"@typescript-eslint/eslint-plugin": "^5.28.0",
+		"@typescript-eslint/parser": "^5.28.0",
+		"@typescript-eslint/typescript-estree": "^5.28.0",
+		"eslint": "^8.17.0",
+		"jest": "^28.1.1",
+		"madge": "^5.0.1",
+		"nodemon": "^2.0.16",
+		"oclif": "^3.0.1",
+		"patch-package": "^6.4.7",
+		"prettier": "^2.7.0",
+		"typescript": "^4.7.3"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"oclif": {
+		"commands": "./lib/commands",
+		"bin": "{{ cookiecutter.binary_name }}",
+		"plugins": [
+			"@oclif/plugin-help",
+			"@oclif/plugin-not-found"
+		]
+	}
 }

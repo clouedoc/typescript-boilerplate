@@ -5,12 +5,12 @@ import fs from 'fs';
  * @param extension extension INCLUDING dot (e.g. '.txt')
  */
 export function enableFileRequirement(extension: string): void {
-  if (!require.extensions[extension]) {
-    require.extensions[extension] = function (
-      module: NodeJS.Module,
-      filename: string,
-    ) {
-      module.exports = fs.readFileSync(filename, 'utf8');
-    };
-  }
+	if (!require.extensions[extension]) {
+		require.extensions[extension] = function (
+			module: NodeJS.Module,
+			filename: string,
+		) {
+			module.exports = fs.readFileSync(filename, 'utf8');
+		};
+	}
 }

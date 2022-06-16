@@ -15,5 +15,5 @@
  * [Stackoverflow source](https://stackoverflow.com/a/65666402/4564097)
  */
 export function throwExpression(errorMessage: string): never {
-  throw new Error(errorMessage);
+	throw new Error(errorMessage);
 }
