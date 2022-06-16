@@ -1,7 +1,3 @@
-tasks:
-  - init: yarn install && yarn build
-    command: yarn dev
-
 vscode:
   extensions:
     - esbenp.prettier-vscode

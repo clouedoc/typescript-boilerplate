@@ -23,7 +23,7 @@
     "postinstall": "patch-package",
     "build": "tsc",
     "dev": "nodemon --exec 'yarn build && yarn lint && yarn oclif:build && yarn sort'",
-    "oclif:build": "oclif manifest && oclif readme",
+    "oclif:build": "oclif manifest && oclif readme"
   },
   "dependencies": {
     "@oclif/command": "^1.8.16",

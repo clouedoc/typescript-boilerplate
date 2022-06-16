@@ -10,7 +10,7 @@
 
 ```bash
 git clone {{ cookiecutter.project_url }}.git
-cd {{ project-slug }}
+cd {{ cookiecutter.project_slug }}
 yarn install && yarn link
 {{ cookiecutter.binary_name }} # see CLI usage documentation below
 ```
