@@ -15,6 +15,22 @@ yarn install && yarn link
 {{ cookiecutter.binary_name }} # see CLI usage documentation below
 ```
 
+## Development
+
+```bash
+git clone {{ cookiecutter.project_url }}.git
+cd {{ cookiecutter.project_slug }}
+yarn install
+
+# Here are the available scripts:
+yarn sort # sort package.json
+yarn detect-circular-dependencies # detect circular deps with Madge
+yarn lint # run ESLint
+yarn prettier # prettify all files
+yarn test # run Jest tests
+yarn dev # run Nodemon (build everything!)
+```
+
 ## CLI
 
 ### Usage
