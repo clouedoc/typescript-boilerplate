@@ -4,9 +4,6 @@
 
 <h3 align="center">
 	My newest TypeScript boilerplate, with Cookiecutter support for easy usage.
-
-**⚠️ This is a work in progress ⚠️**
-
 </h3>
 
 ## Usage
