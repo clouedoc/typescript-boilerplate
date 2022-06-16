@@ -13,7 +13,7 @@ export const logger: Logger = createLogger({
     format.splat(),
     format.json(),
   ),
-  defaultMeta: { service: 'immoscrape' },
+  defaultMeta: { service: '{{ cookiecutter.project_slug }}' },
   transports: [
     new transports.Console({
       format: format.combine(
