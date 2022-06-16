@@ -3,6 +3,7 @@ import winston, { createLogger, format, Logger, transports } from 'winston';
 import { consoleFormat } from 'winston-console-format';
 import LokiTransport from 'winston-loki';
 import { env } from '../utils';
+import os from 'os';
 
 export const logger: Logger = createLogger({
   level: 'silly',
@@ -91,6 +92,7 @@ if (env.LOKI_URL) {
       basicAuth: env.LOKI_BASIC_AUTH,
       labels: {
         service: '{{ cookiecutter.project_slug }}',
+        hostname: os.hostname(),
       },
       json: true,
       replaceTimestamp: true,
