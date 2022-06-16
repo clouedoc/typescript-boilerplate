@@ -14,7 +14,7 @@ const config = {
 		'@rushstack/eslint-config/mixins/packlets',
 	], // <---- put your profile string here
 	parser: '@typescript-eslint/parser',
-	parserOptions: { tsconfigRootDir: __dirname },
+	parserOptions: { tsconfigRootDir: __dirname, project: './tsconfig.json' },
 	env: {
 		es6: true,
 	},
