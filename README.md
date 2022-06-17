@@ -27,11 +27,6 @@ If you are looking for my older boilerplate template, you can find it [here](htt
 - Witty ESLint configuration to keep your code clean
 - Stay in the loop thanks to smart template updates
 
-## To be added
-
-- Browser automation utilities
-- APIs documentation
-
 ## Usage
 
 ```bash
@@ -62,6 +57,11 @@ You may find `*.ref` files that you need to resolve manually.
 
 This code is released under the MIT License
 
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be, learn, inspire, and create. Any contributions you make are greatly appreciated!
+
 ## References
 
 - [Jinja templates reference](https://jinja.palletsprojects.com/en/3.1.x/templates/#list-of-control-structures)
+- [Copier documentation](https://copier.readthedocs.io/en/stable/)
