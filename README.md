@@ -21,7 +21,7 @@ If you are looking for my older boilerplate template, you can find it [here](htt
 - [Docker](https://www.docker.com/) support
   - Puppeteer-ready image integrated
   - ... and a basic Node-based one is included too.
-- [GitPod](https://gitpod.io) support
+- Remote development with [GitPod](https://gitpod.io)
 - CI/CD with [GitHub Actions](https://docs.github.com/en/actions)
 - Package patching thanks to [patch-package](https://github.com/ds300/patch-package)
 - Witty ESLint configuration to keep your code clean
@@ -32,15 +32,17 @@ If you are looking for my older boilerplate template, you can find it [here](htt
 ```bash
 pip install pipx && pipx ensurepath && . ~/.bashrc # pipx installation
 pipx install copier # copier installation
-# Actual template work
+
 copier gh:clouedoc/typescript-boilerplate-evolved your_new_project
+
+cd your_new_project
+yarn install && yarn build
+yarn dev # all good, start programming now!
 ```
 
 ### Fetching updates
 
-This template will frequently get updated over time.
-
-To fetch updates, run the following commands:
+To apply the latest version of this boilerplate to your project, run the following commands:
 
 ```bash
 git status # should be clean
@@ -49,7 +51,7 @@ copier update # this will fetch the latest release
 # copier update --vcs-ref=HEAD
 ```
 
-**Do not manually edit the .copier-answers.yml file. This will confuse the smart update algorithm.**
+**Do not manually edit the .copier-answers.yml file. This will confuse Copier's update algorithm.**
 
 You may find `*.ref` files that you need to resolve manually.
 
