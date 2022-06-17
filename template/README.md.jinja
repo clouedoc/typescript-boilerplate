@@ -1,28 +1,28 @@
 <h1 align="center">
- {{ cookiecutter.project_name }} {{ cookiecutter.project_emoji }}
+ {{ project_name }} {{ project_emoji }}
 </h1>
 
 <h3 align="center">
-	{{ cookiecutter.project_short_description }}
+	{{ project_short_description }}
 </h3>
 
 ## Installation
 
 ```bash
-git clone {{ cookiecutter.project_url }}.git
-cd {{ cookiecutter.project_slug }}
+git clone {{ project_url }}.git
+cd {{ project_slug }}
 yarn install && yarn link
 
 # to be able to call the CLI, you must add the result of `yarn global bin` to your $PATH
 # e.g. echo "export PATH=$PATH:$(yarn global bin)" >> ~/.zshrc
-{{ cookiecutter.binary_name }} # see CLI usage documentation below
+{{ binary_name }} # see CLI usage documentation below
 ```
 
 ## Development
 
 ```bash
-git clone {{ cookiecutter.project_url }}.git
-cd {{ cookiecutter.project_slug }}
+git clone {{ project_url_git }}.git
+cd {{ project_slug }}
 yarn install
 
 # Here are the available scripts:
@@ -49,7 +49,7 @@ yarn dev # run Nodemon (build everything!)
 
 ## License
 
-This project is published under the {{ cookiecutter.project_license }} license.
+This project is published under the {{ project_license }} license.
 
 ## Contributing
 

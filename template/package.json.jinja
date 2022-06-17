@@ -1,13 +1,13 @@
 {
-  "name": "{{ cookiecutter.project_slug }}",
+  "name": "{{ project_slug }}",
   "version": "1.0.0",
-  "private": "{{ cookiecutter.package_private }}",
-  "description": "{{ cookiecutter.project_short_description }}",
-  "repository": "{{ cookiecutter.project_url }}",
-  "license": "{{ cookiecutter.project_license }}",
-  "author": "{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>",
+  {% if package_private %}"private": true,{% endif %}
+  "description": "{{ project_short_description }}",
+  "license": "{{ project_license }}",
+  "repository": "{{ project_url }}",
+  "author": "{{ full_name }} <{{ email }}>",
   "bin": {
-    "{{ cookiecutter.binary_name }}": "./bin/run"
+    "{{ binary_name }}": "./bin/run"
   },
   "files": [
     "lib",
@@ -56,11 +56,11 @@
     "typescript": "^4.7.3"
   },
   "engines": {
-    "node": ">={{ cookiecutter.node_version }}.0.0"
+    "node": ">={{ node_version }}.0.0"
   },
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "{{ cookiecutter.binary_name }}",
+    "bin": "{{ binary_name }}",
     "plugins": [
       "@oclif/plugin-help",
       "@oclif/plugin-not-found"

@@ -19,7 +19,7 @@ xvfb=$!
 export DISPLAY=:99
 
 # TODO: add docker entrypoint command here
-dumb-init -- {{ cookiecutter.binary_name }} docker $@ &
+dumb-init -- {{ binary_name }} docker $@ &
 node=$!
 
 wait $node

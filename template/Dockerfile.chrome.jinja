@@ -71,7 +71,7 @@ RUN apt-get -y -qq --no-install-recommends install \
 	build-essential
 
 # Install NodeJS
-RUN curl --silent --location https://deb.nodesource.com/setup_{{ cookiecutter.node_version }}.x | bash - && \
+RUN curl --silent --location https://deb.nodesource.com/setup_{{ node_version }}.x | bash - && \
 	apt-get -qq install nodejs && \
 	npm install -g npm@latest && \
 	npm install -g yarn
@@ -83,7 +83,7 @@ ENV LANG="C.UTF-8"
 ENV NODE_ENV=production
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 
-LABEL org.opencontainers.image.source {{ cookiecutter.project_url }}
+LABEL org.opencontainers.image.source {{ project_url }}
 
 RUN groupadd -r blessuser && useradd --uid ${BLESS_USER_ID} -r -g blessuser -G audio,video blessuser && \
 	mkdir -p /home/blessuser/Downloads && \

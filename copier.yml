@@ -1,0 +1,80 @@
+# config
+_subdirectory: template
+_tasks:
+  - "git init --initial-branch=main"
+  - "git remote add origin {{ project_url_git }}"
+  - "git add --all"
+  - "git commit -m 'initial commit'"
+
+# questions
+project_name:
+  type: str
+  help: What is your project name?
+  placeholder: "awesome-project"
+
+project_slug:
+  type: str
+  help: What is your project's slug?
+  default: "{{ project_name.lower().replace(' ', '-').replace('_', '-') }}"
+
+full_name:
+  type: str
+  help: What is your full name?
+  placeholder: Camille Louédoc-Eyries
+
+github_username:
+  type: str
+  help: What is your GitHub username?
+  placeholder: clouedoc
+
+project_short_description:
+  type: str
+  help: What is your project about?
+  placeholder: My awesome project does X with Y.
+
+package_private:
+  type: bool
+  help: Do you wish to make your package private?
+  default: yes
+
+binary_name:
+  type: str
+  help: The name of your CLI command
+  default: "{{ project_slug }}"
+
+project_emoji:
+  type: str
+  help: Pick an emoji which describes best your project.
+  placeholder: ✨
+
+email:
+  type: str
+  help: What is your email?
+  placeholder: camille.eyries@gmail.com
+
+node_version:
+  type: str
+  help: Choose a Node version
+  choices:
+    - [Node 16, "16"]
+    - [Node 18, "18"]
+
+project_url:
+  type: str
+  help: Your repository URL
+  default: "https://github.com/{{ github_username }}/{{ project_slug }}"
+
+project_url_git:
+  type: str
+  help: Your project's git URL
+  default: "{{project_url}}.git"
+
+docker_image_name:
+  type: str
+  help: Your Docker image name
+  default: "ghcr.io/{{github_username}}/{{project_slug}}"
+
+project_license:
+  type: str
+  help: Pick a license for your project.
+  default: MIT
