@@ -10,7 +10,7 @@
 
 I aim to update this boilerplate when I integrate new tools in my workflow.
 
-If you are looking for my older boilerplate template, you can find it [here](https://github.com/clouedoc/typescript-boilerplate-archive).
+If you are looking for my older boilerplate template, you can find it [here](https://github.com/clouedoc/typescript-boilerplate-old).
 
 ## Features
 
