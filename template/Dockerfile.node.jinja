@@ -3,9 +3,10 @@ FROM node:{{ node_version }}-alpine as builder
 WORKDIR /app
 
 COPY package.json yarn.lock /app/
-RUN yarn install \
-	&& yarn link \
-	&& npm prune --production
+RUN yarn install
+
+COPY . /app/
+RUN yarn build
 
 FROM node:{{ node_version }}-alpine as runner
 
@@ -20,6 +21,7 @@ WORKDIR /app/
 
 # Link binary name
 RUN yarn link
+RUN npm prune --production
 
 ENTRYPOINT [ "doppler", "run", "--", "{{ binary_name }}" ]
 
