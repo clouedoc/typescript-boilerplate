@@ -3,5 +3,5 @@
 docker:
 	DOCKER_BUILDKIT=1 docker build -t {{ docker_image_name }} .
 
-docker-bash: docker
-	docker run --rm -it {{ docker_image_name }} /bin/bash
+docker-shell: docker
+	docker run --rm --entrypoint sh -it {{ docker_image_name }} /bin/bash
