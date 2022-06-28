@@ -16,6 +16,8 @@ RUN wget -q -t3 'https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.ke
 
 COPY --from=builder /app/ /app/
 
+WORKDIR /app/
+
 # Link binary name
 RUN yarn link
 
