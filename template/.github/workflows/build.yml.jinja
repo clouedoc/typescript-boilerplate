@@ -29,5 +29,7 @@ jobs:
         run: yarn build
       - name: Lint
         run: yarn lint
+      - name: Test
+        run: yarn test
       - name: Check circular dependencies
         run: yarn detect-circular-dependencies
