@@ -1,10 +1,5 @@
 # config
 _subdirectory: template
-_tasks:
-  - "git init --initial-branch=main"
-  - "git remote add origin {{ project_url_git }}"
-  - "git add --all"
-  - "git commit -m 'initial commit'"
 
 # questions
 project_name:
