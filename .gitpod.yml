@@ -2,7 +2,7 @@ vscode:
   extensions:
     - esbenp.prettier-vscode
     - dbaeumer.vscode-eslint
-    - WakaTime.vscode-wakatime@18.1.0
+    - WakaTime.vscode-wakatime
     - streetsidesoftware.code-spell-checker
     - eamodio.gitlens
     - mushan.vscode-paste-image
