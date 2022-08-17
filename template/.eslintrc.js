@@ -42,7 +42,7 @@ const config = {
       },
     },
     {
-      files: ['**/schemas/*.ts'],
+      files: ['**/schemas/*.ts', '**/env.ts'],
       rules: {
         '@typescript-eslint/typedef': 0,
       },
