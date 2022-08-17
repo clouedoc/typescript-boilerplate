@@ -15,7 +15,7 @@
     "bin"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf lib; swc --out-dir ./lib ./src && tsc --noEmit",
     "detect-circular-dependencies": "madge --circular --extensions ts ./src",
     "dev": "nodemon --exec 'yarn build && yarn lint && yarn oclif:build && yarn sort'",
     "postinstall": "patch-package",
