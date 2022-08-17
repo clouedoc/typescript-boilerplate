@@ -6,5 +6,8 @@ docker:
 docker-shell: docker
 	docker run --rm --entrypoint sh -it {{ docker_image_name }} /bin/bash
 
+docker-push:
+	docker push {{ docker_image_name }}
+
 run-docker: docker
 	docker run --rm -it {{ docker_image_name }}
