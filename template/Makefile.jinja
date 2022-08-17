@@ -9,5 +9,5 @@ docker-shell: docker
 docker-push:
 	docker push {{ docker_image_name }}
 
-run-docker: docker
+docker-run: docker
 	docker run --rm -it {{ docker_image_name }}
