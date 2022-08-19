@@ -69,6 +69,11 @@ docker_image_name:
   help: Your Docker image name
   default: "ghcr.io/{{github_username}}/{{project_slug}}"
 
+use_doppler:
+  type: bool
+  help: Do you want to use Doppler (tool to manage environment variables in the cloud)?
+  default: yes
+
 project_license:
   type: str
   help: Pick a license for your project.

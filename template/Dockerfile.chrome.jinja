@@ -121,6 +121,13 @@ WORKDIR $APP_DIR
 RUN chown -R blessuser:blessuser $APP_DIR
 USER blessuser
 
+{% if use_doppler %}
+# Install Doppler CLI
+RUN wget -q -t3 'https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.key' -O /etc/apk/keys/cli@doppler-8004D9FF50437357.rsa.pub && \
+	echo 'https://packages.doppler.com/public/cli/alpine/any-version/main' | tee -a /etc/apk/repositories && \
+	apk add doppler
+{% endif %}
+
 COPY --from=builder --chown=blessuser:blessuser ${APP_DIR}/lib/ ./lib
 COPY --from=builder --chown=blessuser:blessuser ${APP_DIR}/node_modules/ ./node_modules
 COPY --chown=blessuser:blessuser package.json  .
@@ -129,3 +136,9 @@ COPY --chown=blessuser:blessuser bin  ./bin
 COPY --chown=blessuser:blessuser *.sh  .
 
 RUN yarn link && echo "export PATH=$PATH:/home/blessuser/.yarn/bin" >> /home/blessuser/.bashrc
+
+{% if use_doppler %}
+ENTRYPOINT ["doppler", "run", "--", "./bin/run"]
+{% else %}
+ENTRYPOINT ["./bin/run"]
+{% endif %}
