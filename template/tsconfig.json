@@ -3,7 +3,10 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "esnext",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
     "noImplicitAny": true,
@@ -26,6 +29,14 @@
     "allowJs": true,
     "useUnknownInCatchVariables": false
   },
-  "exclude": ["**/node_modules", "**/.*/*", "./lib/**"],
-  "include": ["./src/**/*"]
+  "exclude": [
+    "**/node_modules",
+    "**/.*/*",
+    "./lib/**"
+  ],
+  "include": [
+    "./src/**/*",
+    "./node_modules/puppeteer-extra/**/*.d.ts",
+    "./node_modules/puppeteer-extra-*/**/*.d.ts"
+  ]
 }
