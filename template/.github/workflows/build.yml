@@ -31,6 +31,6 @@ jobs:
       - name: Lint
         run: yarn lint
       - name: Test
-        run: yarn test
+        run: yarn test --passWithNoTests
       - name: Check circular dependencies
         run: yarn detect-circular-dependencies
