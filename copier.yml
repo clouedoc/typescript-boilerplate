@@ -72,7 +72,7 @@ docker_image_name:
 use_doppler:
   type: bool
   help: Do you want to use Doppler (tool to manage environment variables in the cloud)?
-  default: yes
+  default: false
 
 project_license:
   type: str
