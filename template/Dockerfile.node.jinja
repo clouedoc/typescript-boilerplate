@@ -1,5 +1,7 @@
 FROM node:{{ node_version }}-alpine as builder
 
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
 WORKDIR /app
 
 COPY package.json yarn.lock /app/
@@ -9,6 +11,8 @@ COPY . /app/
 RUN yarn build
 
 FROM node:{{ node_version }}-alpine as runner
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 
 {% if use_doppler %}
 # Install Doppler CLI
