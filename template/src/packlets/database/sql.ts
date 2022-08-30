@@ -7,4 +7,5 @@ export const sql: postgres.Sql<{}> = postgres({
   hostname: dbEnv.POSTGRES_HOSTNAME,
   port: dbEnv.POSTGRES_PORT,
   database: dbEnv.POSTGRES_DATABASE,
+  prepare: false, // disable tx preparation, useful when using PgBouncer in transaction mode
 });
