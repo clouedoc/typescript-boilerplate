@@ -17,7 +17,7 @@
   "scripts": {
     "build": "rm -rf lib; swc --out-dir ./lib ./src && tsc --noEmit",
     "detect-circular-dependencies": "madge --circular --extensions ts ./src",
-    "dev": "nodemon --exec 'yarn build && yarn lint && yarn oclif:build && yarn sort'",
+    "dev": "nodemon --exec 'yarn build && yarn lint && yarn detect-circular-dependencies && yarn oclif:build && yarn sort'",
     "postinstall": "patch-package",
     "lint": "eslint ./src --fix --max-warnings 0",
     "oclif:build": "oclif manifest && oclif readme",
