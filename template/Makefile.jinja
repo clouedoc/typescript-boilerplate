@@ -1,4 +1,4 @@
-.PHONY: docker docker-shell run-docker
+.PHONY: docker docker-shell run-docker db-backup
 
 docker:
 	DOCKER_BUILDKIT=1 docker build -t {{ docker_image_name }} .
@@ -11,3 +11,7 @@ docker-push:
 
 docker-run: docker
 	docker run --rm -it {{ docker_image_name }}
+
+# Backup the database to backup.sql
+db-backup:
+	pg_dump $POSTGRES_URL --verbose --format=p --file backup.sql
