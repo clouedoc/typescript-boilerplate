@@ -1,11 +1,9 @@
 import postgres from 'postgres';
 import { dbEnv } from './env';
 
-export const sql: postgres.Sql<{}> = postgres({
-  user: dbEnv.POSTGRES_USER,
-  password: dbEnv.POSTGRES_PASSWORD,
-  hostname: dbEnv.POSTGRES_HOSTNAME,
-  port: dbEnv.POSTGRES_PORT,
-  database: dbEnv.POSTGRES_DATABASE,
-  prepare: false, // disable tx preparation, useful when using PgBouncer in transaction mode
+export const sql: postgres.Sql<{}> = postgres(dbEnv.POSTGRES_URL, {
+  prepare: false, // note: this is needed when using pgBouncer in 'transaction' mode
+  types: {
+    bigint: postgres.BigInt,
+  },
 });
