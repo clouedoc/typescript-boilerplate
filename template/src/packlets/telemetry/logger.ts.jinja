@@ -14,7 +14,7 @@ export const logger: Logger = createLogger({
     format.splat(),
     format.json(),
   ),
-  defaultMeta: { service: '{{ project_slug }}' },
+  defaultMeta: { service: env.SERVICE_NAME },
   transports: [
     new transports.Console({
       format: format.combine(
@@ -91,7 +91,7 @@ if (env.LOKI_URL) {
       host: env.LOKI_URL,
       basicAuth: env.LOKI_BASIC_AUTH,
       labels: {
-        service: '{{ project_slug }}',
+        service: env.SERVICE_NAME,
         hostname: os.hostname(),
       },
       json: true,
