@@ -33,7 +33,8 @@ export function chance(percentage: number): boolean {
 
 /**
  * Wait for an amount of time specified between min and max.
+ * @param range the range to wait for, in milliseconds
  */
-export async function randomWait({ min, max }: IStrongRange): Promise<void> {
-  return delay(randomInteger({ min, max }));
+export async function randomWait(range: IStrongRange): Promise<void> {
+  return delay(randomInteger(range));
 }
