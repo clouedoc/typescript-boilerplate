@@ -1,5 +1,5 @@
 import http from 'http';
-import prometheus from 'prom-client';
+import prometheus, { collectDefaultMetrics } from 'prom-client';
 import { telemetryEnv } from './env';
 import { logger } from './logger';
 
@@ -27,4 +27,4 @@ if (telemetryEnv.PUSHGATEWAY_URL) {
   }, 5000);
 }
 
-export { prometheus };
+collectDefaultMetrics();
