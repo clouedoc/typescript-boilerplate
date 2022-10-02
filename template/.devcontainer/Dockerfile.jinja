@@ -1,0 +1,27 @@
+FROM {{ docker_image_name }}:master
+
+USER root
+
+RUN apt update
+RUN apt install -y zsh ssh tig sudo tmux
+RUN npm install -g sort-package-json
+RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+RUN echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN useradd -m -s /bin/zsh -u 1000 -U dev && groupadd wheel && usermod -aG wheel dev
+
+RUN rm -rf /app
+
+USER dev
+
+# add $(yarn global bin) to the path (zshrc)
+RUN echo "export PATH=\$PATH:$(yarn global bin)" >> ~/.zshrc
+
+RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+ENV NODE_ENV=development
+
+RUN git config --global --add safe.directory /workspaces/
+RUN git config --global --add safe.directory /workspaces/{{project_slug}}
+
+COPY .wakatime.cfg /home/dev

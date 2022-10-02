@@ -1,0 +1,34 @@
+{
+  "build": { "dockerfile": "./Dockerfile", "context": ".." },
+  "postCreateCommand": "yarn install && yarn link",
+  "postStartCommand": "tmux new -d '. ./scripts/xvfb.sh && . ./scripts/vnc.sh && sleep 360d'",
+  "postAttachCommand": "yarn dev",
+  "shutdownAction": "stopContainer",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    // copy git configuration
+    "remote.containers.gitCredentialHelperConfigLocation": "global",
+    "remote.containers.copyGitConfig": true
+  },
+  "forwardPorts": [5900],
+
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "WakaTime.vscode-wakatime",
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-french",
+    "eamodio.gitlens",
+    "mushan.vscode-paste-image",
+    "lukashass.volar",
+    "wayou.vscode-todo-highlight",
+    "nicoespeon.abracadabra",
+    "nick-lvov-dev.typescript-explicit-types",
+    "GitHub.copilot",
+    "GitHub.copilot-labs"
+  ],
+  "containerEnv": {
+    "DISPLAY": ":99"
+  },
+  "runArgs": ["--privileged", "--shm-size=1gb"] // for Chrome to work without needing extra arguments
+}
