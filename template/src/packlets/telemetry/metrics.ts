@@ -1,30 +1,49 @@
-import http from 'http';
-import prometheus, { collectDefaultMetrics } from 'prom-client';
+import execa from 'execa';
+import express, { Express } from 'express';
+import basicAuth from 'express-basic-auth';
+import os from 'os';
+import { collectDefaultMetrics, register } from 'prom-client';
 import { telemetryEnv } from './env';
 import { logger } from './logger';
 
-if (telemetryEnv.PUSHGATEWAY_URL) {
-  const gateway: prometheus.Pushgateway = new prometheus.Pushgateway(
-    telemetryEnv.PUSHGATEWAY_URL,
-    {
-      timeout: 5000, //Set the request timeout to 5000ms
-      agent: new http.Agent({
-        keepAlive: true,
-        keepAliveMsecs: 10000,
-        maxSockets: 5,
-      }),
-    },
-  );
-  setInterval(async () => {
-    try {
-      await gateway.pushAdd({
-        jobName: telemetryEnv.SERVICE_NAME,
-      });
-      logger.silly('Pushed metrics to Prometheus');
-    } catch (err) {
-      logger.error('Failed to push metrics to Prometheus', { err });
-    }
-  }, 5000);
-}
+const api: Express = express();
+api.use(
+  basicAuth({
+    users: { [telemetryEnv.METRICS_USERNAME]: telemetryEnv.METRICS_PASSWORD },
+  }),
+);
 
-collectDefaultMetrics();
+api.get('/metrics', async (req, res) => {
+  try {
+    res.set('Content-Type', register.contentType);
+    res.end(await register.metrics());
+  } catch (ex) {
+    res.status(500).end(ex);
+  }
+});
+
+let prepared: boolean = false;
+export function preparePrometheus(): void {
+  if (prepared) {
+    return;
+  }
+
+  let gitCommitHash: string = 'unknown';
+  try {
+    gitCommitHash =
+      execa.sync('git', ['rev-parse', 'HEAD']).stdout.slice(0, 8) ?? 'unknown';
+  } catch (err) {
+    // logger.warn('Could not get git commit hash', { err });
+  }
+
+  register.setDefaultLabels({
+    service: telemetryEnv.SERVICE_NAME,
+    hostname: os.hostname(),
+    commit: gitCommitHash,
+    instance: os.hostname() + ':' + process.pid,
+  });
+  collectDefaultMetrics();
+  api.listen(telemetryEnv.METRICS_PORT);
+  logger.debug('Prepared Prometheus client');
+  prepared = true;
+}
