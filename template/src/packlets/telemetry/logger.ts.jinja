@@ -1,9 +1,9 @@
 import stringify from 'fast-safe-stringify';
+import os from 'os';
 import winston, { createLogger, format, Logger, transports } from 'winston';
 import { consoleFormat } from 'winston-console-format';
 import LokiTransport from 'winston-loki';
-import { env } from './env';
-import os from 'os';
+import { telemetryEnv } from './env';
 
 export const logger: Logger = createLogger({
   level: 'silly',
@@ -14,7 +14,7 @@ export const logger: Logger = createLogger({
     format.splat(),
     format.json(),
   ),
-  defaultMeta: { service: env.SERVICE_NAME },
+  defaultMeta: { service: telemetryEnv.SERVICE_NAME },
   transports: [
     new transports.Console({
       format: format.combine(
@@ -81,17 +81,17 @@ const errorObjectFormat: winston.Logform.FormatWrap = winston.format((info) => {
   return info;
 });
 
-if (env.LOKI_URL) {
+if (telemetryEnv.LOKI_URL) {
   logger.add(
     new LokiTransport({
       format: winston.format.combine(
         errorObjectFormat(),
         winston.format.json(),
       ),
-      host: env.LOKI_URL,
-      basicAuth: env.LOKI_BASIC_AUTH,
+      host: telemetryEnv.LOKI_URL,
+      basicAuth: telemetryEnv.LOKI_BASIC_AUTH,
       labels: {
-        service: env.SERVICE_NAME,
+        service: telemetryEnv.SERVICE_NAME,
         hostname: os.hostname(),
       },
       json: true,

@@ -1,5 +1,5 @@
 import { platform } from 'os';
-import { browserEnv } from '../env';
+import { browserEnv } from './env';
 
 export const CHROME_ARGS: string[] = [
   '--enable-logging',
