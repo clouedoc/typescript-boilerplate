@@ -1,0 +1,70 @@
+name: Docker
+
+on:
+  push:
+    paths-ignore:
+      - 'k8s/**'
+  workflow_dispatch:
+
+jobs:
+  build-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: # build Dockerfile and Dockerfile.chrome under the names {{project_slug}} and {{project_slug}}-chrome
+        include:
+          - dockerfile: Dockerfile
+            suffix: ''
+          - dockerfile: Dockerfile.chrome
+            suffix: -chrome
+    name: {{ '${{ project_slug }}' }}{{ '${{ matrix.suffix }}' }}
+    env:
+      IMAGE_NAME: {{docker_image_name}}{{ '${{ matrix.suffix }}' }}
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to GitHub Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: {{ '${{ github.actor }}' }}
+          password: {{ '${{ secrets.GITHUB_TOKEN }}' }}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            {{ '${{ env.IMAGE_NAME }}' }}
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          file: {{ '${{ matrix.dockerfile }}' }}
+          tags: {{ '${{ steps.meta.outputs.tags }}' }}
+          labels: {{ '${{ steps.meta.outputs.labels }}' }}
+          cache-from: type=registry,ref={{ '${{ env.IMAGE_NAME }}' }}:buildcache
+          cache-to: type=registry,ref={{ '${{ env.IMAGE_NAME }}' }}:buildcache,mode=max
+      # uncomment the following if using Kubernetes
+      # - uses: tale/kubectl-action@v1
+      #   with:
+      #     base64-kube-config: {{ '${{ secrets.KUBE_CONFIG }}' }}
+      #     kubectl-version: v1.24.3
+      # - name: deploy {{project_slug}}-chrome
+      #   if: {{ '${{ matrix.suffix }}' }} == '-chrome'
+      #   run: |
+      #     kubectl rollout restart deploy my-awesome-chrome-service -n my-namespace
+      # - name: deploy {{project_slug}}
+      #   if: {{ '${{ matrix.suffix }}' }} == ''
+      #   run: |
+      #     kubectl rollout restart deploy my-awesome-nonchrome-service -n my-namespace

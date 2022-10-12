@@ -5,6 +5,7 @@ on:
     paths-ignore:
       - 'docker/**'
       - '.github/**'
+      - 'k8s/**'
   workflow_dispatch:
 
 jobs:
