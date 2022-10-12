@@ -11,3 +11,5 @@ lib
 # Yarn
 package-lock.json
 yarn-error.log
+
+.wakatime.cfg
