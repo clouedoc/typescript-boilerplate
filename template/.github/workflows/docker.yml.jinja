@@ -16,7 +16,7 @@ jobs:
             suffix: ''
           - dockerfile: Dockerfile.chrome
             suffix: -chrome
-    name: {{ '${{ project_slug }}' }}{{ '${{ matrix.suffix }}' }}
+    name: {{ project_slug }}{{ '${{ matrix.suffix }}' }}
     env:
       IMAGE_NAME: {{docker_image_name}}{{ '${{ matrix.suffix }}' }}
     steps:
