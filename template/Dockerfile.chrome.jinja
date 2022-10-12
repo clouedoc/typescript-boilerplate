@@ -107,6 +107,8 @@ RUN npm prune --production
 # ================ RUNNER ==================
 FROM base as runner
 
+RUN apt-get update && apt-get install -y x11vnc fluxbox
+
 # --- Chrome installation
 RUN if [ "$(dpkg --print-architecture)" != "amd64" ]; then echo "Chrome Stable is only available for amd64" && exit 1; fi
 RUN cd /tmp &&\
@@ -133,12 +135,12 @@ COPY --from=builder --chown=blessuser:blessuser ${APP_DIR}/node_modules/ ./node_
 COPY --chown=blessuser:blessuser package.json  .
 COPY --chown=blessuser:blessuser oclif.manifest.json .
 COPY --chown=blessuser:blessuser bin  ./bin
-COPY --chown=blessuser:blessuser *.sh  .
+COPY --chown=blessuser:blessuser scripts  ./scripts
 
 RUN yarn link && echo "export PATH=$PATH:/home/blessuser/.yarn/bin" >> /home/blessuser/.bashrc
 
 {% if use_doppler %}
-ENTRYPOINT ["doppler", "run", "--", "./bin/run"]
+ENTRYPOINT ["doppler", "run", "--", "/bin/sh"]
 {% else %}
-ENTRYPOINT ["./bin/run"]
+ENTRYPOINT ["/bin/sh"]
 {% endif %}
