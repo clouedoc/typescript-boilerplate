@@ -1,3 +1,17 @@
 {
-  "cSpell.words": ["pipx"]
+  "cSpell.words": [
+    "argocd",
+    "ARGOCD",
+    "arkade",
+    "Hetzner",
+    "jsonpath",
+    "KUBECONFIG",
+    "kubectl",
+    "kubeseal",
+    "kustomization",
+    "masternode",
+    "noconfirm",
+    "pacman",
+    "pipx"
+  ]
 }
