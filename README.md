@@ -22,7 +22,7 @@ If you are looking for my older boilerplate template, you can find it [here](htt
   - Puppeteer-ready image integrated
   - ... and a basic Node-based one is included too.
 - Remote development with [GitPod](https://gitpod.io)
-- CI/CD with [GitHub Actions](https://docs.github.com/en/actions)
+- CI/CD with [GitHub Actions](https://docs.github.com/en/actions) and ArgoCD
 - Package patching thanks to [patch-package](https://github.com/ds300/patch-package)
 - Witty ESLint configuration to keep your code clean
 - Stay in the loop thanks to smart template updates
