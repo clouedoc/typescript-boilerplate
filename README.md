@@ -15,14 +15,15 @@ If you are looking for my older boilerplate template, you can find it [here](htt
 ## Features
 
 - Parse your environment variables with [Zod](https://github.com/colinhacks/zod)
-- [Loki](https://github.com/grafana/loki/) integration
+- Collect and extract metrics from your logs using [Loki](https://github.com/grafana/loki/)
 - Update your packages with [ncu](https://github.com/raineorshine/npm-check-updates)
-- Integrates an [oclif](https://github.com/oclif/oclif) CLI
-- [Docker](https://www.docker.com/) support
+- Build a beautiful CLI UX with [oclif](https://github.com/oclif/oclif) CLI
+- Build reusable [Docker](https://www.docker.com/) images
   - Puppeteer-ready image integrated
-  - ... and a basic Node-based one is included too.
-- Remote development with [GitPod](https://gitpod.io)
-- CI/CD with [GitHub Actions](https://docs.github.com/en/actions) and ArgoCD
+  - ... and a lightweight Node-based one is included too.
+- containerized development thanks to DevContainers
+- CI with [GitHub Actions](https://docs.github.com/en/actions)
+- CD with Kubernetes and ArgoCD
 - Package patching thanks to [patch-package](https://github.com/ds300/patch-package)
 - Witty ESLint configuration to keep your code clean
 - Stay in the loop thanks to smart template updates
